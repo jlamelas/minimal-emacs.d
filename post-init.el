@@ -781,4 +781,7 @@
               delete-old-versions t
               create-lockfiles nil)
 
+;; Magit
+(use-package magit)
+
 ;;; post-init.el ends here
