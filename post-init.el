@@ -672,4 +672,48 @@
        ;; Automatically rename Denote buffers using the `denote-rename-buffer-format'.
        (denote-rename-buffer-mode 1))
 
+(use-package denote-journal
+  :ensure t
+  ;; Bind those to some key for your convenience.
+  :commands ( denote-journal-new-entry
+              denote-journal-new-or-existing-entry
+              denote-journal-link-or-create-entry )
+  :hook (calendar-mode . denote-journal-calendar-mode)
+  :config
+  ;; Use the "journal" subdirectory of the `denote-directory'.  Set this
+  ;; to nil to use the `denote-directory' instead.
+  (setq denote-journal-directory
+        (expand-file-name "journal" denote-directory))
+  ;; Default keyword for new journal entries. It can also be a list of
+  ;; strings.
+  (setq denote-journal-keyword "journal")
+  ;; Read the doc string of `denote-journal-title-format'.
+  (setq denote-journal-title-format 'day-date-month-year))
+
+;; Consult-Notes for easy access to notes
+(use-package consult-notes
+  :custom
+  (consult-notes-denote-display-keywords-indicator "_")
+  :bind
+  (("C-c n c f" . consult-notes)
+   ("C-c n c g" . consult-notes-search-in-all-notes))
+  :init
+  (consult-notes-denote-mode))
+
+;; The markdown-mode package provides a major mode for Emacs for syntax
+;; highlighting, editing commands, and preview support for Markdown documents.
+;; It supports core Markdown syntax as well as extensions like GitHub Flavored
+;; Markdown (GFM).
+(use-package markdown-mode
+  :commands (gfm-mode
+             gfm-view-mode
+             markdown-mode
+             markdown-view-mode)
+  :mode (("\\.markdown\\'" . markdown-mode)
+         ("\\.md\\'" . markdown-mode)
+         ("README\\.md\\'" . gfm-mode))
+  :bind
+  (:map markdown-mode-map
+        ("C-c C-e" . markdown-do)))
+
 ;;; post-init.el ends here
