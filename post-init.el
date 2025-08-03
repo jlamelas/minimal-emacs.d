@@ -1026,12 +1026,13 @@
     (setq vterm-max-scrollback 10000))
 
   (use-package vterm-toggle
-    :bind (:map global-mode-map
-                ("C-c v t" . vterm-toggle)
-                ("C-c v c" . vterm-toggle-cd)
+    :bind (
+           :map global-map
+           ("C-c v t" . 'vterm-toggle)
+           ("C-c v c" . vterm-toggle-cd)
            :map vterm-mode-map
-                ("C-RET" . vterm-toggle-insert-cd)
-                ("M-f". vterm-toggle-forward)
-                ("M-b" . vterm-toggle-backward))))
+           ("C-<return>" . vterm-toggle-insert-cd)
+           ("M-f". vterm-toggle-forward)
+           ("M-b" . vterm-toggle-backward))))
 
 ;;; post-init.el ends here
