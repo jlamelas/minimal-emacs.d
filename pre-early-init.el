@@ -9,14 +9,17 @@ FILENAME: O nome do ficheiro a ligar no directorio actual.
 LINK: O destino da ligazón simbólica."
   (let ((target (concat default-directory filename))
         (link-dir (file-name-directory link)))
-    (unless (file-exists-p link)
+    (unless (file-exists-p link) ; Primeiro verificar se a ligazón existe.
       (unless (file-exists-p link-dir)
         (make-directory link-dir t))  ; Crea os directorios pais se non existen.
       (make-symbolic-link target link))))
 
-(maybe-create-symlink-relative "jla.el" (concat (expand-file-name "jla/" user-emacs-directory) "jla.el"))
 
 ;;; Reducing clutter in ~/.emacs.d by redirecting files to ~/.emacs.d/var/
 (setq user-emacs-directory (expand-file-name "var/" minimal-emacs-user-directory))
 (setq package-user-dir (expand-file-name "elpa" user-emacs-directory))
+(maybe-create-symlink-relative "jla.el" (concat (expand-file-name "jla/" user-emacs-directory) "jla.el"))
 (add-to-list 'load-path (expand-file-name "jla" user-emacs-directory))
+
+;;; pre-early-init ends here
+
