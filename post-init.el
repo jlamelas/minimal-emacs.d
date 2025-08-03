@@ -716,4 +716,69 @@
   (:map markdown-mode-map
         ("C-c C-e" . markdown-do)))
 
+;; FILE MANAGEMENT
+(use-package dired
+  :ensure
+  nil
+  :commands
+  (dired dired-jump)
+  :hook
+  ((dired-mode . dired-hide-details-mode)
+   (dired-mode . hl-line-mode))
+  :custom
+  (dired-listing-switches
+   "-goah --group-directories-first --time-style=long-iso")
+  (dired-dwim-target t)
+  (delete-by-moving-to-trash t)
+  (setq dired-recursive-copies 'always)
+  (setq dired-recursive-deletes 'always)
+  :init
+  (put 'dired-find-alternate-file 'disabled nil))
+
+;; Hide or display hidden files
+(use-package dired
+  :ensure nil
+  :hook (dired-mode . dired-omit-mode)
+  :bind (:map dired-mode-map
+              ( "."     . dired-omit-mode))
+  :custom (dired-omit-files "^\\.[a-zA-Z0-9]+"))
+
+;; Dired subtree
+(use-package dired-subtree
+  :ensure t
+  :after dired
+  :bind
+  ( :map dired-mode-map
+    ("<tab>" . dired-subtree-toggle)
+    ("TAB" . dired-subtree-toggle)
+    ("<backtab>" . dired-subtree-remove)
+    ("S-TAB" . dired-subtree-remove))
+  :config
+  (setq dired-subtree-use-backgrounds nil))
+
+;; Dired image
+(use-package image-dired
+  :bind
+  (("C-c w I" . image-dired))
+  (:map image-dired-thumbnail-mode-map
+        ("C-<right>" . image-dired-display-next)
+        ("C-<left>"  . image-dired-display-previous)))
+
+;; Trashed
+(use-package trashed
+  :ensure t
+  :commands (trashed)
+  :config
+  (setq trashed-action-confirmer 'y-or-n-p)
+  (setq trashed-use-header-line t)
+  (setq trashed-sort-key '("Date deleted" . t))
+  (setq trashed-date-format "%Y-%m-%d %H:%M:%S"))
+
+;; Backup files
+(setq-default backup-directory-alist
+              `(("." . ,(expand-file-name "backups/" user-emacs-directory)))
+              version-control t
+              delete-old-versions t
+              create-lockfiles nil)
+
 ;;; post-init.el ends here
