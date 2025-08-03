@@ -937,4 +937,10 @@
 
   (treemacs-hide-gitignored-files-mode nil))
 
+;; Line numbers
+(use-package display-line-numbers
+  :ensure nil
+  :hook ((prog-mode conf-mode vue-mode) . display-line-numbers-mode)
+  :init (setq display-line-numbers-width-start t))
+
 ;;; post-init.el ends here
