@@ -1,5 +1,10 @@
 ;;; post-init.el --- This file is loaded after init.el -*- no-byte-compile: t; lexical-binding: t; -*-
 
+;;; Commentary:
+;; Packages configuration.
+
+;;; Code:
+
 ;; Native compilation enhances Emacs performance by converting Elisp code into
 ;; native machine code, resulting in faster execution and improved
 ;; responsiveness.
