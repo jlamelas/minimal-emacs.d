@@ -1013,4 +1013,25 @@
               ("M-n" . flycheck-next-error) ; optional but recommended error navigation
               ("M-p" . flycheck-previous-error)))
 
+;; Terminal emulator
+;; Only GNU/Linux systems. Install this packages `apt install cmake libtool libtool-bin'
+(when (eq system-type 'gnu/linux)
+
+  (use-package vterm
+    :commands vterm
+    :custom
+    (vterm-always-compile-module t)
+    :config
+    (setq vterm-shell "bash")
+    (setq vterm-max-scrollback 10000))
+
+  (use-package vterm-toggle
+    :bind (:map global-mode-map
+                ("C-c v t" . vterm-toggle)
+                ("C-c v c" . vterm-toggle-cd)
+           :map vterm-mode-map
+                ("C-RET" . vterm-toggle-insert-cd)
+                ("M-f". vterm-toggle-forward)
+                ("M-b" . vterm-toggle-backward))))
+
 ;;; post-init.el ends here
