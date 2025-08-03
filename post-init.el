@@ -461,3 +461,16 @@
   :after treemacs
   :config
   (treemacs-load-theme "nerd-icons"))
+
+;; Spacious padding
+(use-package spacious-padding
+  :custom
+  (line-spacing 3)
+  :init
+  (spacious-padding-mode 1))
+
+;; doom-modeline
+(use-package doom-modeline
+  :ensure t
+  :init (doom-modeline-mode 1)
+  :custom ((doom-modeline-height 15)))
