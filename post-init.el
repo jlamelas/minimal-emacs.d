@@ -943,4 +943,10 @@
   :hook ((prog-mode conf-mode vue-mode) . display-line-numbers-mode)
   :init (setq display-line-numbers-width-start t))
 
+;; Move line/region up/down
+(use-package move-text
+  :bind
+  ("M-<up>" . 'move-text-up)
+  ("M-<down>" . 'move-text-down))
+
 ;;; post-init.el ends here
