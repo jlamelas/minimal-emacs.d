@@ -424,7 +424,7 @@
   ([remap describe-command] . helpful-command)
   ([remap describe-function] . helpful-callable)
   ([remap describe-key] . helpful-key)
-  ([remap describe-symbol] . helpful-symbol)
+  ([remap describe-symbol] . helpful-at-point)
   ([remap describe-variable] . helpful-variable)
   :custom
   (helpful-max-buffers 7))
@@ -485,3 +485,16 @@
   (which-key-max-description-length 40)
   (which-key-lighter nil)
   (which-key-sort-order 'which-key-description-order))
+
+;; Text mode settings
+(use-package text-mode
+  :ensure
+  nil
+  :hook
+  (text-mode . visual-line-mode)
+  :init
+  (delete-selection-mode t)
+  :custom
+  (sentence-end-double-space nil)
+  (scroll-error-top-bottom t)
+  (save-interprogram-paste-before-kill t))
