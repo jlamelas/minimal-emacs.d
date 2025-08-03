@@ -797,4 +797,41 @@
   (treesit-auto-add-to-auto-mode-alist 'all)
   (global-treesit-auto-mode))
 
+;; gptel
+(use-package gptel
+  :custom
+  (gptel-default-mode 'org-mode)
+  (gptel-expert-commands t)
+  (gptel-model 'gpt-4o)
+  (gptel-api-key 'gptel-api-key-from-auth-source)  ;; Usar a función por defecto para obter a clave API
+  :bind (("C-c j a c" . gptel)
+         ("C-c j a s" . gptel-send)
+         ("C-c j a m" . gptel-menu)
+         ("M-n" . gptel-end-of-response))
+  :config
+  (gptel-make-gemini
+      "google-gemini"
+    :key 'gptel-api-key
+    :stream t
+    :models '("gemini-2.0-flash-exp" "gemini-2.0-pro-exp-02-05" "gemini-2.0-flash-thinking-exp-01-21"))
+  (require 'gptel-curl)
+  (require 'gptel-transient)
+  (unless (jla/get-ollama-models)
+    (setq gptel--known-backends
+          (assoc-delete-all "Ollama" gptel--known-backends #'equal)))
+  (when (jla/get-ollama-models)
+    (gptel-make-openai
+        "ollama-compatible"
+      :stream t
+      :host "localhost:11434"
+      :protocol "http"
+      :endpoint "/v1/chat/completions"
+      :models (jla/get-ollama-models)))
+  (setq gptel-backend (gptel-make-openai "github-models"
+                        :host "models.inference.ai.azure.com"
+                        :endpoint "/chat/completions"
+                        :stream t
+                        :key 'gptel-api-key
+                        :models (append (jla/get-github-models) '("DeepSeek-R1")))))
+
 ;;; post-init.el ends here
