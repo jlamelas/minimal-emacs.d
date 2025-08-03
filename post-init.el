@@ -476,3 +476,12 @@
   :ensure t
   :init (doom-modeline-mode 1)
   :custom ((doom-modeline-height 15)))
+
+;; Improve keyboard shortcut discoverability
+(use-package which-key
+  :config
+  (which-key-mode)
+  :custom
+  (which-key-max-description-length 40)
+  (which-key-lighter nil)
+  (which-key-sort-order 'which-key-description-order))
