@@ -7,13 +7,11 @@
   "Crea unha ligazón simbólica de FILENAME no directorio actual a LINK.
 FILENAME: O nome do ficheiro a ligar no directorio actual.
 LINK: O destino da ligazón simbólica."
-  (let ((target (concat default-directory filename))
+  (let ((target (concat minimal-emacs-user-directory filename))
         (link-dir (file-name-directory link)))
-    (unless (file-exists-p link) ; Primeiro verificar se a ligazón existe.
-      (unless (file-exists-p link-dir)
-        (make-directory link-dir t))  ; Crea os directorios pais se non existen.
-      (make-symbolic-link target link))))
-
+    (unless (file-exists-p link-dir)
+      (make-directory link-dir t))
+    (make-symbolic-link target link 1)))
 
 ;;; Reducing clutter in ~/.emacs.d by redirecting files to ~/.emacs.d/var/
 (setq user-emacs-directory (expand-file-name "var/" minimal-emacs-user-directory))
@@ -22,4 +20,3 @@ LINK: O destino da ligazón simbólica."
 (add-to-list 'load-path (expand-file-name "jla" user-emacs-directory))
 
 ;;; pre-early-init ends here
-
