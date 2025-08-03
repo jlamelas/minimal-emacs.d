@@ -1005,4 +1005,12 @@
 (setq column-number-mode t)
 (setq mode-line-position-column-line-format '("%l:%C"))
 
+;; Flycheck
+(use-package flycheck
+  :ensure t
+  :init (global-flycheck-mode)
+  :bind (:map flycheck-mode-map
+              ("M-n" . flycheck-next-error) ; optional but recommended error navigation
+              ("M-p" . flycheck-previous-error)))
+
 ;;; post-init.el ends here
