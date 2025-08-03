@@ -428,7 +428,36 @@
   (helpful-max-buffers 7))
 
 ;; Mixed-pch mode
-
 (use-package mixed-pitch
   :hook
   (org-mode . mixed-pitch-mode))
+
+;; Icons
+(use-package nerd-icons
+  :init
+  (when (and (not (member "Symbols Nerd Font Mono" (font-family-list)))
+             (window-system))
+    (nerd-icons-install-fonts t)))
+
+(use-package nerd-icons-completion
+  :ensure t
+  :after marginalia
+  :config
+  (add-hook 'marginalia-mode-hook #'nerd-icons-completion-marginalia-setup))
+
+(use-package nerd-icons-corfu
+  :ensure t
+  :after corfu
+  :config
+  (add-to-list 'corfu-margin-formatters #'nerd-icons-corfu-formatter))
+
+(use-package nerd-icons-dired
+  :ensure t
+  :hook
+  (dired-mode . nerd-icons-dired-mode))
+
+(use-package treemacs-nerd-icons
+  :ensure t
+  :after treemacs
+  :config
+  (treemacs-load-theme "nerd-icons"))
