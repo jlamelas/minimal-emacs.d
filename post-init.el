@@ -949,4 +949,9 @@
   ("M-<up>" . 'move-text-up)
   ("M-<down>" . 'move-text-down))
 
+;; Electric pair
+(use-package elec-pair
+  :hook (prog-mode . electric-pair-mode)
+  :init (setq electric-pair-inhibit-predicate 'electric-pair-conservative-inhibit))
+
 ;;; post-init.el ends here
