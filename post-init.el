@@ -498,3 +498,25 @@
   (sentence-end-double-space nil)
   (scroll-error-top-bottom t)
   (save-interprogram-paste-before-kill t))
+
+;; Load personal custom variables and funstions
+(require 'jla)
+
+;; Check spelling with flyspell and hunspell
+(use-package flyspell
+  :custom
+  (ispell-program-name "hunspell")
+  (ispell-dictionary jla/hunspell-dictionaries)
+  ;;(flyspell-mark-duplications-flag nil) ;; Writegood mode does this
+  (org-fold-core-style 'overlays) ;; Fix Org mode bug
+  :config
+  (ispell-set-spellchecker-params)
+  (ispell-hunspell-add-multi-dic jla/hunspell-dictionaries)
+  :hook
+  ((text-mode . flyspell-mode)
+   ((prog-mode vue-mode) . flyspell-prog-mode))
+  :bind
+  (("C-c w s s" . ispell)
+   ("C-;"       . flyspell-auto-correct-previous-word)))
+
+;;; post-init.el ends here
