@@ -937,6 +937,10 @@
 
   (treemacs-hide-gitignored-files-mode nil))
 
+(use-package treemacs-magit
+  :after (treemacs magit)
+  :ensure t)
+
 ;; Line numbers
 (use-package display-line-numbers
   :ensure nil
