@@ -817,8 +817,8 @@
   (gptel-make-gemini
       "google-gemini"
     :key 'gptel-api-key
-    :stream t
-    :models '("gemini-2.0-flash-exp" "gemini-2.0-pro-exp-02-05" "gemini-2.0-flash-thinking-exp-01-21"))
+    :stream t)
+  ;; :models '("gemini-2.0-flash-exp" "gemini-2.0-pro-exp-02-05" "gemini-2.0-flash-thinking-exp-01-21"))
   (require 'gptel-curl)
   (require 'gptel-transient)
   (unless (jla/get-ollama-models)
@@ -832,6 +832,7 @@
       :protocol "http"
       :endpoint "/v1/chat/completions"
       :models (jla/get-ollama-models)))
+  (gptel-make-gh-copilot "Copilot")
   (setq gptel-backend (gptel-make-openai "github-models"
                         :host "models.inference.ai.azure.com"
                         :endpoint "/chat/completions"
