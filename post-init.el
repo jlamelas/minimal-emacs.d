@@ -1,4 +1,4 @@
-;;; post-init.el --- This file is loaded after init.el -*- no-byte-compile: t; lexical-binding: t; -*-
+;; post-init.el --- This file is loaded after init.el -*- no-byte-compile: t; lexical-binding: t; -*-
 
 ;;; Commentary:
 ;; Packages configuration.
@@ -814,6 +814,75 @@
          ("C-c j a m" . gptel-menu)
          ("M-n" . gptel-end-of-response))
   :config
+  (gptel-make-tool
+   :name "create_file"                    ; javascript-style  snake_case name
+   :function (lambda (path filename content)   ; the function that runs
+               (let ((full-path (expand-file-name filename path)))
+                 (with-temp-buffer
+                   (insert content)
+                   (write-file full-path))
+                 (format "Created file %s in %s" filename path)))
+   :description "Create a new file with the specified content"
+   :args (list '(:name "path"             ; a list of argument specifications
+	                   :type string
+	                   :description "The directory where to create the file")
+               '(:name "filename"
+	                   :type string
+	                   :description "The name of the file to create")
+               '(:name "content"
+	                   :type string
+	                   :description "The content to write to the file"))
+   :category "filesystem")                ; An arbitrary label for grouping
+  (gptel-make-tool
+   :name "read_buffer"                    ; javascript-style snake_case name
+   :function (lambda (buffer)                  ; the function that will run
+               (unless (buffer-live-p (get-buffer buffer))
+                 (error "error: buffer %s is not live." buffer))
+               (with-current-buffer  buffer
+                 (buffer-substring-no-properties (point-min) (point-max))))
+   :description "return the contents of an emacs buffer"
+   :args (list '(:name "buffer"
+                       :type string            ; :type value must be a symbol
+                       :description "the name of the buffer whose contents are to be retrieved"))
+   :category "emacs")                     ; An arbitrary label for grouping
+  (gptel-make-tool
+   :name "create_file"                    ; javascript-style  snake_case name
+   :function (lambda (path filename content)   ; the function that runs
+               (let ((full-path (expand-file-name filename path)))
+                 (with-temp-buffer
+                   (insert content)
+                   (write-file full-path))
+                 (format "Created file %s in %s" filename path)))
+   :description "Create a new file with the specified content"
+   :args (list '(:name "path"             ; a list of argument specifications
+	                   :type string
+	                   :description "The directory where to create the file")
+               '(:name "filename"
+	                   :type string
+	                   :description "The name of the file to create")
+               '(:name "content"
+	                   :type string
+	                   :description "The content to write to the file"))
+   :category "filesystem")                ; An arbitrary label for grouping
+  (gptel-make-tool
+   :name "search_web"
+   :function #'jla/search-web
+   :description "Search the web"
+   :include t
+   :category "web"
+   :args (list `(:name "query"
+                       :type string
+                       :description ,(format "Search terms / string to search on the web using %s" jla/gptel-search-prefix))))
+
+  (gptel-make-tool
+   :name "read_webpage"
+   :function #'jla/read-web
+   :description "Read the content of a URL"
+   :include t
+   :category "web"
+   :args (list '(:name "url"
+                       :type string
+                       :description "URL to read")))
   (gptel-make-gemini
       "google-gemini"
     :key 'gptel-api-key
