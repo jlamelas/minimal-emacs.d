@@ -735,6 +735,11 @@
   (:map markdown-mode-map
         ("C-c C-e" . markdown-do)))
 
+;; yaml-mode
+(use-package yaml-mode
+  :mode (("\\.yml\\'" . yaml-mode)
+         ("\\.yaml\\'" . yaml-mode)))
+
 ;; FILE MANAGEMENT
 (use-package dired
   :ensure
