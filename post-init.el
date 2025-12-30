@@ -448,7 +448,7 @@
   :custom
   (helpful-max-buffers 7))
 
-;; Mixed-pch mode
+;; Mixed-pitch mode
 (use-package mixed-pitch
   :hook
   (org-mode . mixed-pitch-mode))
