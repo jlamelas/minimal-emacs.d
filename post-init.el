@@ -819,7 +819,40 @@
   (treesit-auto-install 'prompt)
   :config
   (treesit-auto-add-to-auto-mode-alist 'all)
-  (global-treesit-auto-mode))
+  (global-treesit-auto-mode)
+  ;; Enhanced syntax highlighting
+  (setq treesit-font-lock-level 4)
+  (add-hook 'tree-sitter-after-on-hook #'tree-sitter-hl-mode))
+
+;; Major mode remapping
+(setq major-mode-remap-alist
+      '((yaml-mode . yaml-ts-mode)
+        (bash-mode . bash-ts-mode)
+        (js-mode . js-ts-mode)
+        (js2-mode . js-ts-mode)
+        (js-base-mode . js-ts-mode)
+        (typescript-mode . typescript-ts-mode)
+        (json-mode . json-ts-mode)
+        (css-mode . css-ts-mode)
+        (python-mode . python-ts-mode)
+        (tsx-mode . tsx-ts-mode)
+        (jsx-mode . tsx-ts-mode)))
+
+;; imenu list
+(use-package imenu-list
+  :custom
+  (imenu-list-focus-after-activation t)
+  :bind
+  (("C-." . imenu-list-smart-toggle)))
+
+;; Olivetti mode
+(use-package olivetti)
+
+;; Nov
+(use-package nov
+  :ensure t
+  :config
+  (add-to-list 'auto-mode-alist '("\\.epub\\'" . nov-mode)))
 
 ;; gptel
 (use-package gptel
