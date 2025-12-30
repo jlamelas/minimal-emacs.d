@@ -933,6 +933,12 @@
       :host "localhost:11434"
       :protocol "http"
       :endpoint "/v1/chat/completions"
+      :models (jla/get-ollama-models))
+    (gptel-make-ollama "Ollama"
+      :stream t
+      :host "ollama.com"
+      :endpoint "/api"
+      :key 'gptel-api-key
       :models (jla/get-ollama-models)))
   (gptel-make-gh-copilot "Copilot")
   (setq gptel-backend (gptel-make-openai "github-models"
