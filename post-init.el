@@ -1149,4 +1149,29 @@
            ("M-f". vterm-toggle-forward)
            ("M-b" . vterm-toggle-backward))))
 
+;; Eglot
+(use-package eglot
+  :defer t
+  :commands (eglot eglot-ensure)
+  :custom
+  (eglot-send-changes-idle-time 0.5)
+  (eglot-extend-to-xref t)
+  (eglot-events-buffer-size 0)  ; Add this for better performance
+  :config
+  ;; Move eglot-server-programs to :config block
+  (setq eglot-server-programs
+        '(((js-ts-mode typescript-ts-mode tsx-ts-mode) .
+           ("typescript-language-server" "--stdio"))))
+  :bind (:map eglot-mode-map
+              ("C-c l a" . eglot-code-actions)
+              ("C-c l r" . eglot-rename)
+              ("C-c l f" . eglot-format)
+              ("C-c l d" . eldoc)
+              ("C-c l o" . eglot-code-action-organize-imports)
+              ("C-c l h" . eglot-inlay-hints-mode)
+              ("C-c l q" . eglot-shutdown-all))
+  :hook ((js-ts-mode . eglot-ensure)
+         (typescript-ts-mode . eglot-ensure)
+         (tsx-ts-mode . eglot-ensure)))
+
 ;;; post-init.el ends here
