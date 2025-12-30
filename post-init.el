@@ -344,7 +344,7 @@
 (mapc #'disable-theme custom-enabled-themes)  ; Disable all active themes
 (use-package ef-themes
   :init
-  (load-theme 'ef-deuteranopia-light :no-congirm-loading))
+  (load-theme 'ef-maris-dark :no-congirm-loading))
 
 ;; The stripspace Emacs package provides stripspace-local-mode, a minor mode
 ;; that automatically removes trailing whitespace and blank lines at the end of
