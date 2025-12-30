@@ -898,25 +898,6 @@
                        :description "the name of the buffer whose contents are to be retrieved"))
    :category "emacs")                     ; An arbitrary label for grouping
   (gptel-make-tool
-   :name "create_file"                    ; javascript-style  snake_case name
-   :function (lambda (path filename content)   ; the function that runs
-               (let ((full-path (expand-file-name filename path)))
-                 (with-temp-buffer
-                   (insert content)
-                   (write-file full-path))
-                 (format "Created file %s in %s" filename path)))
-   :description "Create a new file with the specified content"
-   :args (list '(:name "path"             ; a list of argument specifications
-	                   :type string
-	                   :description "The directory where to create the file")
-               '(:name "filename"
-	                   :type string
-	                   :description "The name of the file to create")
-               '(:name "content"
-	                   :type string
-	                   :description "The content to write to the file"))
-   :category "filesystem")                ; An arbitrary label for grouping
-  (gptel-make-tool
    :name "search_web"
    :function #'jla/search-web
    :description "Search the web"
