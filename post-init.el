@@ -115,6 +115,20 @@
 (setq auto-save-interval 300)
 (setq auto-save-timeout 30)
 
+;; Font configuration
+(custom-set-faces
+ ;; Default font for all text
+ '(default ((t (:family "Fira Code" :height 130))))
+ '(fixed-pitch ((t (:family "Fira Code" :height 110))))
+
+ ;; Current line number
+ '(line-number-current-line ((t (:foreground "orange" :inherit line-number))))
+ '(mode-line ((t (:family "Fira Code" :weight Bold))))
+
+ ;; Comments italic
+ '(font-lock-function-name-face ((t (:family "Fira Code":slant italic))))
+ '(font-lock-variable-name-face ((t (:family "Fira Code":weight bold)))))
+
 ;; Corfu enhances in-buffer completion by displaying a compact popup with
 ;; current candidates, positioned either below or above the point. Candidates
 ;; can be selected by navigating up or down.
