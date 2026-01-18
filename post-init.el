@@ -173,6 +173,16 @@
   :config
   (vertico-mode))
 
+;; Vertico posframe is a package which lets Vertico use posframe to show candidate menu
+(use-package vertico-posframe
+  :ensure t
+  :hook
+  (after-init . vertico-posframe-mode)
+  :custom
+  (vertico-posframe-parameters
+   '((left-fringe . 8)
+     (right-fringe . 8))))
+
 ;; Vertico leverages Orderless' flexible matching capabilities, allowing users
 ;; to input multiple patterns separated by spaces, which Orderless then
 ;; matches in any order against the candidates.
