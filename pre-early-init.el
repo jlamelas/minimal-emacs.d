@@ -1,7 +1,12 @@
 ;;; pre-early-init.el --- This file is loaded before early-init.el -*- no-byte-compile: t; lexical-binding: t; -*-
 
+;; Maximize frame
+(push '(fullscreen . maximized) default-frame-alist)
+
 ;; UI configurations
 (setq minimal-emacs-ui-features '(context-menu menu-bar dialogs tooltips))
+
+
 
 (defun maybe-create-symlink-relative (filename link)
   "Crea unha ligazón simbólica de FILENAME no directorio actual a LINK.
