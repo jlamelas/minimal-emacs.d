@@ -7,6 +7,10 @@
 
 ;;; Code:
 
+;; Inicia o frame maximizado
+(push '(fullscreen . maximazed) default-frame-alist)
 
+;; Elementos da UI que debe cagar minimal-emacs
+(setq minimal-emacs-ui-features '(men-bar))
 
 ;;; pre-early-init.el ends here
