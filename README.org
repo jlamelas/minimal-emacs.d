@@ -1,0 +1,4 @@
+#+TITLE: Configuración persoal de Emacs
+
+* Resumo
+Esta é unha configuración persoal de Emacs baseada no [[https://github.com/jamescherti/minimal-emacs.d][miminal-emacs.d]].
