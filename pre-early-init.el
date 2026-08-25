@@ -11,6 +11,10 @@
 (push '(fullscreen . maximazed) default-frame-alist)
 
 ;; Elementos da UI que debe cagar minimal-emacs
-(setq minimal-emacs-ui-features '(men-bar))
+(setq minimal-emacs-ui-features '(menu-bar))
+
+;; Redireccionar ficheiros variables para manter a raíz limpa
+(setq user-emacs-directory (expand-file-name "var/" minimal-emacs-user-directory))
+(setq package-user-dir (expand-file-name "elpa"  user-emacs-directory))
 
 ;;; pre-early-init.el ends here
