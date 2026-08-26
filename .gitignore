@@ -5,3 +5,4 @@
 !.github/
 !.LICENSE
 !pre-early-init.el
+!lisp/
