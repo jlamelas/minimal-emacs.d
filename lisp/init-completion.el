@@ -169,41 +169,20 @@
 ;; current candidates, positioned either below or above the point. Candidates
 ;; can be selected by navigating up or down.
 (use-package corfu
-  :ensure t
-  :commands (corfu-mode global-corfu-mode)
-
-  :hook ((prog-mode . corfu-mode)
-         (shell-mode . corfu-mode)
-         (eshell-mode . corfu-mode))
-
-  :custom
-  (corfu-auto t)
-  (corfu-auto-delay 0.2)
-  (corfu-auto-prefix 2)
-  (corfu-popupinfo-delay nil)
-  (corfu-preview-delay nil)
+  :init
+  (setq text-mode-ispell-word-completion nil)
   ;; Hide commands in M-x which do not apply to the current mode.
-  (read-extended-command-predicate #'command-completion-default-include-p)
+  (setq read-extended-command-predicate #'command-completion-default-include-p)
   ;; Disable Ispell completion function. As an alternative try `cape-dict'.
-  (text-mode-ispell-word-completion nil)
-  (tab-always-indent 'complete)
-  (corfu-cycle t)                ;; Enable cycling for `corfu-next/previous'
-  ;; (corfu-quit-at-boundary nil)   ;; Never quit at completion boundary
-  ;; (corfu-quit-no-match nil)      ;; Never quit, even if there is no match
-  (corfu-preview-current t)    ;; Disable current candidate preview
-  (corfu-preselect 'prompt)      ;; Preselect the prompt
-  (corfu-on-exact-match 'insert) ;; Configure handling of exact matches
+  (setq tab-always-indent 'complete)
 
-  ;; Enable Corfu
-  :config
-  (global-corfu-mode))
+  (global-corfu-mode 1))
 
 ;; Cape, or Completion At Point Extensions, extends the capabilities of
 ;; in-buffer completion. It integrates with Corfu or the default completion UI,
 ;; by providing additional backends through completion-at-point-functions.
 (use-package cape
-  :ensure t
-  :commands (cape-dabbrev cape-file cape-elisp-block)
+  :commands (cape-dabbrev cape-file cape-elisp-block cape-keyword cape-emoji cape-history cape-elisp-symbol)
   :bind ("C-c p" . cape-prefix-map)
   :init
   ;; Add to the global default value of `completion-at-point-functions' which is
