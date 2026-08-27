@@ -12,10 +12,10 @@ Crear un ficheiro =init-org.el= no directorio =/lisp= para as configuracións.
 ** TODO Configuración de auto-completado
 Pila Vompeccc (Vertico, Orderless, Marginalia, Prescient, Embark, Consult, Corfu e Cape).
 
-Crear un ficheiro =init-completion.el= no directorio =/lip= para as configuracións.
+Crear un ficheiro =init-completion.el= no directorio =/lisp= para as configuracións.
 
 ** TODO Configuración para programación
-Crear un ficheiro =init-dev.el= no directorio =/lip= para as configuracións.
+Crear un ficheiro =init-dev.el= no directorio =/lisp= para as configuracións.
 
 - https://github.com/konrad1977/flyover
 
@@ -26,4 +26,4 @@ Configuracións para =gptel.el= e ferramentas relacionadas:
 - https://github.com/karthink/gptel-preset-collection
 - https://github.com/kmontag/macher
 
-Crear un ficheiro =init-ai.el= no directorio =/lip= para as configuracións.
+Crear un ficheiro =init-ai.el= no directorio =/lisp= para as configuracións.
