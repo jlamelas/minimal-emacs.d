@@ -9,7 +9,8 @@
 ;; Cargamos ficheiros de configuración
 (condition-case err
     (progn
-      (require 'init-ui))
+      (require 'init-ui)
+      (require 'init-core))
   (error
    (message "Erro ao cargar o ficheiro %s" err)))
 
