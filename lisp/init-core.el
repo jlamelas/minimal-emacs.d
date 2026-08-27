@@ -36,6 +36,8 @@
   (push "/lisp/init-utils.el" compile-angel-excluded-files)
   (push "/lisp/init-ui.el" compile-angel-excluded-files)
   (push "/lisp/init-core.el" compile-angel-excluded-files)
+  (push "/lisp/init-completion.el" compile-angel-excluded-files)
+  (push "/lisp/init-dev.el" compile-angel-excluded-files)
 
   ;; A local mode that compiles .el files whenever the user saves them.
   ;; (add-hook 'emacs-lisp-mode-hook #'compile-angel-on-save-local-mode)
