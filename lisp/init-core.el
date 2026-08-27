@@ -271,7 +271,7 @@
    (dired-mode . hl-line-mode))
   :custom
   (dired-listing-switches
-   "-goah --group-directories-first --time-style=long-iso")
+   "-lgoah --group-directories-first --time-style=long-iso")
   (dired-dwim-target t)
   (delete-by-moving-to-trash t)
   (setq dired-recursive-copies 'always)
