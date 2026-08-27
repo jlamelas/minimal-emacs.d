@@ -310,6 +310,35 @@
   :hook (prog-mode . electric-pair-mode)
   :init (setq electric-pair-inhibit-predicate 'electric-pair-conservative-inhibit))
 
+;; Terminal emulator
+;; Only GNU/Linux systems. Install this packages `apt install cmake libtool libtool-bin'
+(when (eq system-type 'gnu/linux)
+
+  (use-package vterm
+    :commands vterm
+    :custom
+    (vterm-always-compile-module t)
+    :config
+    (setq vterm-shell "bash")
+    (setq vterm-max-scrollback 10000))
+
+  (use-package vterm-toggle
+    :bind (
+           :map global-map
+           ("C-c v t" . 'vterm-toggle)
+           ("C-c v c" . vterm-toggle-cd)
+           :map vterm-mode-map
+           ("C-<return>" . vterm-toggle-insert-cd)
+           ("M-f". vterm-toggle-forward)
+           ("M-b" . vterm-toggle-backward))))
+
+;; imenu list
+(use-package imenu-list
+  :custom
+  (imenu-list-focus-after-activation t)
+  :bind
+  (("C-." . imenu-list-smart-toggle)))
+
 (provide 'init-core)
 
 ;;; init-core.el ends here
