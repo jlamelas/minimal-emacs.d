@@ -10,7 +10,7 @@
 (defvar jla-ollama-api-endpoint "http://localhost:11434"
   "A URL para a API do servidor Ollama.")
 
-(defun jla/get-ollama-models ()
+(defun jla-get-ollama-models ()
   "Return a list of Ollama models from the API, or nil if the API is not available."
   (when-let*
       ((url (url-generic-parse-url jla-ollama-api-endpoint))
