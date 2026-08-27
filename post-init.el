@@ -10,7 +10,8 @@
 (condition-case err
     (progn
       (require 'init-ui)
-      (require 'init-core))
+      (require 'init-core)
+      (require 'init-completion))
   (error
    (message "Erro ao cargar o ficheiro %s" err)))
 
