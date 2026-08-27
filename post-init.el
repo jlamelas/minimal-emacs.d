@@ -11,7 +11,8 @@
     (progn
       (require 'init-ui)
       (require 'init-core)
-      (require 'init-completion))
+      (require 'init-completion)
+      (require 'init-dev))
   (error
    (message "Erro ao cargar o ficheiro %s" err)))
 
