@@ -216,4 +216,6 @@
   (add-hook 'completion-at-point-functions #'cape-history)
   (add-hook 'completion-at-point-functions #'cape-elisp-symbol))
 
+(provide 'init-completion)
+
 ;;; init-completion.el ends here
