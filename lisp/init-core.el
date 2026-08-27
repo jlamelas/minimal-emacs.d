@@ -223,6 +223,23 @@
   (scroll-error-top-bottom t)
   (save-interprogram-paste-before-kill t))
 
+;; Check spelling with flyspell and hunspell
+(use-package flyspell
+  :custom
+  (ispell-program-name "hunspell")
+  (ispell-dictionary "gl_ES")
+  ;;(flyspell-mark-duplications-flag nil) ;; Writegood mode does this
+  (org-fold-core-style 'overlays) ;; Fix Org mode bug
+  :config
+  (ispell-set-spellchecker-params)
+  (ispell-hunspell-add-multi-dic "gl_ES,es_ES,en_GB")
+  :hook
+  ((text-mode . flyspell-mode)
+   ((prog-mode vue-mode) . flyspell-prog-mode))
+  :bind
+  (("C-c w s s" . ispell)
+   ("C-;"       . flyspell-auto-correct-previous-word)))
+
 ;; FILE MANAGEMENT
 (use-package dired
   :ensure
