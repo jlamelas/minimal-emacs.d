@@ -1,10 +1,10 @@
 ;;; init-core.el --- Configuracións centrais -*- no-byte-compile: t; lexical-binding: t; -*-
 
-;;; Comment:
+;;; Commentary:
 
 ;; Configuracións centrais de Emacs.
 
-;;; Code
+;;; Code:
 
 ;; Native compilation enhances Emacs performance by converting Elisp code into
 ;; native machine code, resulting in faster execution and improved
