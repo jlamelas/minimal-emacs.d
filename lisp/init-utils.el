@@ -24,6 +24,16 @@
                                      maybe-ollama-models)))
     my-ollama-models))
 
+(defun jla-emacs-running-in-wsl-p ()
+  "Determina se esta instancia de Emacs está executándose nunha contorna WSL."
+  (and (eq system-type 'gnu/linux)
+       (file-exists-p "/proc/version")
+       (with-temp-buffer
+         (insert-file-contents "/proc/version")
+         (if (re-search-forward "Microsoft" nil t)
+             t
+           nil))))
+
 (provide 'init-utils)
 
 ;;; init-utils.el ends here

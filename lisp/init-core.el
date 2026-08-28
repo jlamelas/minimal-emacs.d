@@ -359,6 +359,13 @@
   :bind
   (("C-." . imenu-list-smart-toggle)))
 
+;; Windows Subsystem for Linux
+;; Se estamos en SWL abrir ligazóns no navegador por defecto de Windows
+(if (jla-emacs-running-in-wsl-p)
+    (setq browse-url-generic-program "/mnt/c/Windows/System32/cmd.exe"
+	      browse-url-generic-args '("/c" "start")
+	      browse-url-browser-function 'browse-url-generic))
+
 (provide 'init-core)
 
 ;;; init-core.el ends here
