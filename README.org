@@ -6,7 +6,7 @@ Esta é unha configuración persoal de Emacs baseada no [[https://github.com/jam
 
 * Pendente
 
-** TODO Configuracións para org-mode e relacionados
+** DONE Configuracións para org-mode e relacionados
 Crear un ficheiro =init-org.el= no directorio =/lisp= para as configuracións.
 
 ** DONE Configuración de auto-completado
@@ -17,7 +17,9 @@ Crear un ficheiro =init-completion.el= no directorio =/lisp= para as configuraci
 ** TODO Configuración para programación
 Crear un ficheiro =init-dev.el= no directorio =/lisp= para as configuracións.
 
-- https://github.com/konrad1977/flyover
+- [X] https://github.com/konrad1977/flyover
+- [ ] Incluír LSP para Java
+- [ ] Incluír LSP para web (typescript e relacionados)
 
 ** TODO Configuración para intelixencia artificial
 Configuracións para =gptel.el= e ferramentas relacionadas:
