@@ -12,6 +12,7 @@
       (require 'init-ui)
       (require 'init-core)
       (require 'init-completion)
+      (require 'init-org)
       (require 'init-dev))
   (error
    (message "Erro ao cargar o ficheiro %s" err)))
