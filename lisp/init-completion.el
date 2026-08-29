@@ -67,7 +67,7 @@
 ;; Consult offers a suite of commands for efficient searching, previewing, and
 ;; interacting with buffers, file contents, and more, improving various tasks.
 (use-package consult
-  :ensure t
+  :commands (consult-preview-at-point-mode)
   :bind (;; C-c bindings in `mode-specific-map'
          ("C-c M-x" . consult-mode-command)
          ("C-c h" . consult-history)
@@ -159,11 +159,19 @@
   (setq consult-narrow-key "<"))
 
 (use-package embark-consult
-  :ensure t
-  :after (embark consult))
+  :after (embark consult)
+  :hook (embark-collect-mode-hook . consult-preview-at-point-mode))
 
-(with-eval-after-load 'consult
-  (add-hook 'embark-collect-mode-hook #'consult-preview-at-point-mode))
+;; Consult-Notes for easy access to notes
+(use-package consult-notes
+  :after (consult denote)
+  :custom
+  (consult-notes-denote-display-keywords-indicator "_")
+  :bind
+  (("C-c n c f" . consult-notes)
+   ("C-c n c g" . consult-notes-search-in-all-notes))
+  :init
+  (consult-notes-denote-mode))
 
 ;; Corfu enhances in-buffer completion by displaying a compact popup with
 ;; current candidates, positioned either below or above the point. Candidates
