@@ -170,12 +170,6 @@
   (eglot-send-changes-idle-time 0.5)
   (eglot-extend-to-xref t)
   (eglot-events-buffer-size 0)  ; Add this for better performance
-  :config
-  ;; Move eglot-server-programs to :config Block
-  (setq eglot-server-programs
-        '(((js-ts-mode typescript-ts-mode tsx-ts-mode) .
-           ("typescript-language-server" "--stdio"))
-          (java-ts-mode . ("jdtls"))))
   :bind (:map eglot-mode-map
               ("C-c l a" . eglot-code-actions)
               ("C-c l r" . eglot-rename)
@@ -187,8 +181,25 @@
               ("C-c l q" . eglot-shutdown-all))
   :hook ((js-ts-mode . eglot-ensure)
          (typescript-ts-mode . eglot-ensure)
-         (tsx-ts-mode . eglot-ensure)
-         (java-ts-mode . eglot-ensure)))
+         (tsx-ts-mode . eglot-ensure)))
+
+;; eglot-java
+;; Auto-installs language servers.
+(use-package eglot-java
+  :bind (:map eglot-java-mode-map
+              ("C-c l n" . eglot-java-file-new)
+              ("C-c l x" . eglot-java-run-main)
+              ("C-c l t" . eglot-java-run-test)
+              ("C-c l N" . eglot-java-project-new)
+              ("C-c l T" . eglot-java-project-build-task)
+              ("C-c l R" . eglot-java-project-build-refresh))
+  :hook (java-ts-mode . eglot-java-mode))
+
+;; eglot-typescript-preset
+;; For install language servers see https://github.com/mwolson/eglot-typescript-preset
+(use-package eglot-typescript-preset
+  :vc (:url "https://github.com/mwolson/eglot-typescript-preset"
+            :main-file "eglot-typescript-preset.el"))
 
 ;; Apheleia is an Emacs package designed to run code formatters (e.g., Shfmt,
 ;; Black and Prettier) asynchronously without disrupting the cursor position.
