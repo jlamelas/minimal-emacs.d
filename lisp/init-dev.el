@@ -340,6 +340,10 @@
         (set-display-table-slot display-table 'selective-display value)
         (setq buffer-display-table display-table))))))
 
+;; eldoc-box
+(use-package eldoc-box
+  :hook (prog-mode-hook . eldoc-box-hover-mode))
+
 (provide 'init-dev)
 
 ;;; init-dev.el ends here
