@@ -88,6 +88,7 @@
 
 ;; LaTeX PDF Export settings
 (use-package ox-latex
+  :ensure nil
   :demand t
   :custom
   ;; Multiple LaTeX passes for bibliographies
