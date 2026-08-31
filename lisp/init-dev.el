@@ -40,6 +40,11 @@
         (jsx-mode . tsx-ts-mode)
         (java-mode . java-ts-mode)))
 
+;; treesit-fold
+(use-package treesit-fold
+  :vc "https://github.com/emacs-tree-sitter/treesit-fold.git"
+  :hook ((prog-mode-hook . treesit-fold-mode)))
+
 ;; A file and project explorer for Emacs that displays a structured tree
 ;; layout, similar to file browsers in modern IDEs. It functions as a sidebar
 ;; in the left window, providing a persistent view of files, projects, and
