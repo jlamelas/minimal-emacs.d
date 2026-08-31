@@ -43,6 +43,16 @@
   :hook
   (org-mode . org-appear-mode))
 
+;; org-modern
+(use-package org-modern
+  :defer t
+  :hook (org-mode-hook . org-modern-mode))
+
+;;  org-modern-indent
+(use-package org-modern-indent
+  :vc "https://github.com/jdtsmith/org-modern-indent.git"
+  :config (add-hook 'org-mode-hook #'org-modern-indent-mode 90))
+
 ;; Org-capture
 (use-package org
   :bind
