@@ -347,11 +347,7 @@
     :bind (
            :map global-map
            ("C-c v t" . 'vterm-toggle)
-           ("C-c v c" . vterm-toggle-cd)
-           :map vterm-mode-map
-           ("C-<return>" . vterm-toggle-insert-cd)
-           ("M-f". vterm-toggle-forward)
-           ("M-b" . vterm-toggle-backward))))
+           ("C-c v c" . vterm-toggle-cd))))
 
 ;; imenu list
 (use-package imenu-list
