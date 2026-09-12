@@ -24,6 +24,15 @@
                                      maybe-ollama-models)))
     my-ollama-models))
 
+(defun jla-get-github-models ()
+  "Return a list of GitHub models from the API, nil if the API is not available."
+  (when-let*
+      ((maybe-github-models (split-string (shell-command-to-string
+                                           (concat "curl -X GET -s --connect-timeout 0.5 'https://models.inference.ai.azure.com/models' | jq -r '.[].name'")) "\n" t))
+       (my-github-models (seq-filter (lambda (s) (not (string= s "")))
+                                     maybe-github-models)))
+    my-github-models))
+
 (defun jla-emacs-running-in-wsl-p ()
   "Determina se esta instancia de Emacs está executándose nunha contorna WSL."
   (and (eq system-type 'gnu/linux)
