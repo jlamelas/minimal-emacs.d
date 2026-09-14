@@ -195,6 +195,10 @@
   (:map markdown-mode-map
         ("C-c C-e" . markdown-do)))
 
+;; Olivetti mode
+(use-package olivetti
+  :hook (org-mode . olivetti-mode))
+
 (provide 'init-org)
 
 ;;; init-org.el ends here
