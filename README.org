@@ -3,29 +3,3 @@
 
 * Resumo
 Esta é unha configuración persoal de Emacs baseada no [[https://github.com/jamescherti/minimal-emacs.d][miminal-emacs.d]].
-
-* Pendente
-
-** DONE Configuracións para org-mode e relacionados
-Crear un ficheiro =init-org.el= no directorio =/lisp= para as configuracións.
-
-** DONE Configuración de auto-completado
-Pila Vompeccc (Vertico, Orderless, Marginalia, Prescient, Embark, Consult, Corfu e Cape).
-
-Crear un ficheiro =init-completion.el= no directorio =/lisp= para as configuracións.
-
-** TODO Configuración para programación
-Crear un ficheiro =init-dev.el= no directorio =/lisp= para as configuracións.
-
-- [X] https://github.com/konrad1977/flyover
-- [ ] Incluír LSP para Java
-- [ ] Incluír LSP para web (typescript e relacionados)
-
-** TODO Configuración para intelixencia artificial
-Configuracións para =gptel.el= e ferramentas relacionadas:
-- https://github.com/karthink/gptel-agent
-- https://github.com/karthink/gptel-annotate
-- https://github.com/karthink/gptel-preset-collection
-- https://github.com/kmontag/macher
-
-Crear un ficheiro =init-ai.el= no directorio =/lisp= para as configuracións.
